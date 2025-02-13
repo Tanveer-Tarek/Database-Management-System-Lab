@@ -1,0 +1,16 @@
+select *from authors
+select * from titleauthor
+select *from titles
+Select au_lname, title_id from authors join titleauthor on authors.au_id= titleauthor.au_id
+Select au_lname, title from authors join titleauthor on authors.au_id= titleauthor.au_id join titles on titles.title_id=titleauthor.title_id
+Select au_lname, title, pub_name from authors join titleauthor on authors.au_id= titleauthor.au_id join titles on titles.title_id=titleauthor.title_id join publishers on publishers.pub_id=titles.pub_id
+CREATE PROC  sp_showauthor
+AS
+BEGIN
+
+Select au_lname, title, pub_name from authors join titleauthor on authors.au_id= titleauthor.au_id join titles on titles.title_id=titleauthor.title_id join publishers on publishers.pub_id=titles.pub_id
+
+END
+
+EXEC sp_showauthor
+DROP PROC sp_showauthor
